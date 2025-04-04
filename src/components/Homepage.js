@@ -32,7 +32,7 @@ export default function Homepage() {
 
 const searchProducts = (event) => {
   event.preventDefault();
-  fetchDataFromApi(`/api/search?q=${searchFields}`).then((res) => {
+  fetchDataFromApi(`/api/search/filter?q=${searchFields}`).then((res) => {
     context.setSearchData(res)
     router.push("/search")
   })

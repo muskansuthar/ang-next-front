@@ -30,7 +30,7 @@ export default function FeaturedProducts() {
   };
 
   if (featuredProducts.length === 0) {
-    return <p className="text-center mt-10">No Featured Products Available</p>;
+    return 
   }
 
   const prevIndex = currentIndex === 0 ? featuredProducts.length - 1 : currentIndex - 1;

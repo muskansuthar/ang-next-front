@@ -185,7 +185,7 @@ export default function SearchPage() {
             </Link>
           ))
         ) : (
-          <p className="text-center col-span-2 mt-10">No products available.</p>
+          <p className="text-center col-span-3 mt-10">No products available.</p>
         )}
       </div>
 
