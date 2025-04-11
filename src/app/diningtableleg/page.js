@@ -8,18 +8,15 @@ import { MyContext } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { togVariants, headVariants, slideInRight } from "@/utils/animation";
 
-export default function Stool() {
+
+export default function DiningTableleg() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [products, setProducts] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const [legFinishData, setLegfinishData] = useState([]);
   const [legMaterialData, setLegmaterialData] = useState([]);
-  const [topFinishData, setTopfinishData] = useState([]);
-  const [topMaterialData, setTopmaterialData] = useState([]);
   const [filters, setFilters] = useState({
-    topmaterial: "",
     legmaterial: "",
-    topfinish: "",
     legfinish: ""
   });
 
@@ -29,10 +26,11 @@ export default function Stool() {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
+  
   useEffect(() => {
     window.scrollTo(0, 0)
 
-    fetchDataFromApi("/api/category/search?name=Stool").then((res) => {
+    fetchDataFromApi("/api/category/search?name=Dining Table Leg").then((res) => {
       setCategoryData(res?.categoryList);
     });
 }, [])
@@ -45,7 +43,7 @@ export default function Stool() {
         topfinish: "",
         legfinish: ""
       });
-      fetchDataFromApi("/api/products/filter?category=Stool").then((res) => {
+      fetchDataFromApi("/api/products/filter?category=Metal Leg").then((res) => {
         setProducts(res.products);
         setOpenDropdown(null);
 
@@ -76,7 +74,7 @@ export default function Stool() {
       );
 
       const queryParams = new URLSearchParams(cleanedFilters).toString();
-      const res = await fetchDataFromApi(`/api/products/filter?category=Stool&${queryParams}`);
+      const res = await fetchDataFromApi(`/api/products/filter?category=Dining Table Leg&${queryParams}`);
       setProducts(res.products);
     };
 
@@ -87,18 +85,14 @@ export default function Stool() {
     if (context) {
       setLegfinishData(context.legfinishData || []);
       setLegmaterialData(context.legmaterialData || []);
-      setTopfinishData(context.topfinishData || []);
-      setTopmaterialData(context.topmaterialData || []);
     }
   }, [context]);
 
   const filterOptions = {
-    "Top Material": topMaterialData,
     "Leg Material": legMaterialData,
-    "Top Finish": topFinishData,
     "Leg Finish": legFinishData,
     "Category": [
-      { _id: "all", name: "Stool" }, // Add "All" option
+      { _id: "all", name: "Dining Table Leg" }, // Add "All" option
     ],
     "Remove Filters": [
       { _id: "all", name: "All Products" }, // Add "All" option
@@ -112,10 +106,10 @@ export default function Stool() {
   return (
     <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
       <div className="flex flex-wrap mt-3">
-        <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white] lg:px-10">
+        <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white]">
           <div className="hidden lg:block h-[85px]"></div>
           <motion.div
-            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px] uppercase"
+            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px]"
             initial="offscreen"
             whileInView="onscreen"
             variants={headVariants}
@@ -128,7 +122,7 @@ export default function Stool() {
             whileInView="onscreen"
             variants={togVariants}
           >
-            Our stool collection showcases a harmonious fusion of natural elegance and industrial aesthetics, offering a diverse range of options to complement your space.
+            Explore our extensive collection of metal dining legs, scrupulously crafted to complement a variety of dining tops. Elevate your space with these exquisite leg designs.
           </motion.p>
         </div>
         <motion.div
@@ -139,15 +133,15 @@ export default function Stool() {
         >
           <Image
             src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
-            alt="Stool Image"
-            className="sm:w-[85%] h-[200px] xs:h-[250px] sm:h-[300px] lg:ml-2"
+            alt="Metal Leg"
+            className="sm:w-[90%] h-[200px] xs:h-[250px] sm:h-[300px] lg:ml-10"
             width={500}
             height={500}
           />
         </motion.div>
       </div>
 
-      <div className="my-4 px-auto grid grid-cols-3 md:grid-cols-6 text-center xl:text-start">
+      <div className="my-4 px-auto grid grid-cols-2 md:grid-cols-4 text-center">
         {Object.entries(filterOptions).map(([label, options]) => (
           <div key={label} className="relative flex justify-center">
             <button
@@ -175,21 +169,21 @@ export default function Stool() {
         ))}
       </div>
 
-      <div className="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-4 md:gap-6 grid-cols-2">
         {products?.length > 0 ? (
           products?.map((product) => (
             <Link
               key={product._id}
-              href={`/stool/${product._id}`}
+              href={`/diningtableleg/${product._id}`}
               className="flex flex-col items-center justify-center border p-1 md:p-4 h-36 sm:h-44 md:h-56 lg:h-64 xl:h-72 2xl:h-80 text-center hover:scale-105 transition-transform"
             >
-              <div className="flex-grow flex items-center justify-center w-[50%] md:w-[80%]">
+              <div className="flex-grow flex items-center justify-center w-[80%]">
                 <Image
                   src={getImageUrl(product?.images[0]) || "/placeholder.jpg"}
                   alt={product.name}
                   width={300}
                   height={200}
-                  className="w-2/3 mx-auto"
+                  className="w-3/4 mx-auto"
                 />
               </div>
               <div className="w-full text-xs sm:text-[17px] sm:tracking-[3px] mt-auto">
@@ -198,7 +192,7 @@ export default function Stool() {
             </Link>
           ))
         ) : (
-          <p className="text-center col-span-4 mt-10">No products available.</p>
+          <p className="text-center col-span-2 mt-10">No products available.</p>
         )}
       </div>
     </div>

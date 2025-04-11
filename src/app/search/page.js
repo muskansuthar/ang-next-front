@@ -24,7 +24,7 @@ export default function SearchPage() {
     topfinish: "",
     legfinish: "",
     category: "",
-    knockeddown: "",
+    removefilters: "",
   });
 
   const context = useContext(MyContext);
@@ -49,21 +49,21 @@ export default function SearchPage() {
         topfinish: "",
         legfinish: "",
         category: "",
-        knockeddown: "",
+        removefilters: "",
       });
       fetchDataFromApi(`/api/products/category?category=${value}`).then((res) => {
         setBaseProducts(res.products); // Update base products for further filtering
         setProducts(res.products);
         setOpenDropdown(null);
       }) 
-    } else if (label === "knockeddown") {
+    } else if (value === "all") {
       setFilters({
         topmaterial: "",
         legmaterial: "",
         topfinish: "",
         legfinish: "",
         category: "",
-        knockeddown: "",
+        removefilters: "",
       });
       setProducts(context.searchData); // Show all products
       setBaseProducts(context.searchData);
@@ -106,7 +106,9 @@ export default function SearchPage() {
     "Top Finish": topFinishData,
     "Leg Finish": legFinishData,
     "Category": categoryData,
-    "Knocked Down": [{ _id: "all", name: "Searched Products" }], // Add "All" option
+    "Remove Filters": [
+      { _id: "all", name: "Search Products" },
+    ]
   };
 
   const imageBaseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/uploads/`;
@@ -179,7 +181,7 @@ export default function SearchPage() {
                   className="w-3/4 mx-auto object-contain max-h-full"
                 />
               </div>
-              <div className="text-xs sm:text-sm lg:text-[17px] sm:tracking-[3px] p-1 md:p-3 mt-auto overflow-hidden text-ellipsis whitespace-nowrap">
+              <div className="w-full text-xs sm:text-sm lg:text-[17px] sm:tracking-[3px] p-1 md:p-3 mt-auto overflow-hidden text-ellipsis whitespace-nowrap">
                 {product.name}
               </div>
             </Link>

@@ -117,6 +117,14 @@ export const slideIn = {
     transition: { duration: 1.6, delay: 0.2 },
   },
 };
+export const slideUp = {
+  offscreen: { opacity: 0, y: 70 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 2, delay: 0.2 },
+  },
+};
 
 export const buttonHover = {
   hover: { scale: 1.05, transition: { duration: 0.3 } },

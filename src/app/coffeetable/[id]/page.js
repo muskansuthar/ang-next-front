@@ -74,7 +74,7 @@ export default function CoffeeTableDetails({ params }) {
             alt="Background"
             width={400}
             height={500}
-            className="max-w-none w-[95%] h-[600px] object-cover object-center opacity-50 z-0"
+            className="max-w-none w-full h-[700px] object-cover object-center opacity-20 z-0"
           />
         </div>
 
@@ -97,11 +97,10 @@ export default function CoffeeTableDetails({ params }) {
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
-                className={`absolute left-2 sm:left-10 lg:left-10 z-10 bg-white p-1 rounded-full shadow-md ${
-                  currentSlide === 0
+                className={`absolute left-2 sm:left-10 lg:left-10 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide === 0
                     ? "opacity-50 cursor-not-allowed"
                     : "cursor-pointer"
-                }`}
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -141,11 +140,10 @@ export default function CoffeeTableDetails({ params }) {
               <button
                 onClick={nextSlide}
                 disabled={currentSlide >= product.images.length - 3}
-                className={`absolute right-2 sm:right-10 lg:right-10 z-10 bg-white p-1 rounded-full shadow-md ${
-                  currentSlide >= product.images.length - 3
+                className={`absolute right-2 sm:right-10 lg:right-10 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide >= product.images.length - 3
                     ? "opacity-50 cursor-not-allowed"
                     : "cursor-pointer"
-                }`}
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -163,26 +161,33 @@ export default function CoffeeTableDetails({ params }) {
             </div>
           </div>
 
-          {/* Text Box */}
-          <div className="flex w-full md:ml-8 md:mt-9 flex-col items-center md:items-start">
-            <div className="w-full md:w-auto text-center md:text-left mt-6 mb-2 text-sm md:text-xl font-sans font-medium tracking-wide md:tracking-[12px]">
-              {product.name}
-            </div>
-            <div className="w-full md:w-auto text-center md:text-left mt-1 mb-6 text-xs sm:text-[14px] tracking-widest capitalize">
-              <ul className="ml-4">
-                <li className="md:list-disc md:marker:text-[9px]">
-                  <span className="font-medium text-sm md:text-[16px]">
-                    Material
-                  </span>
-                  : {product.topmaterial?.name} / {product.legmaterial?.name} .{" "}
-                  <span className="font-medium text-sm md:text-[16px] ml-4">
-                    Finish
-                  </span>
-                  : {product.topfinish?.name}
-                </li>
-              </ul>
-            </div>
+          <div className="flex w-full mb-4 md:ml-4 md:mt-9 flex-col items-center md:items-start">
+            <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-20 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
+            {product.name}
           </div>
+
+          <div className="w-full text-center md:text-left mt-1 mb-3 text-xs tracking-widest px-3 md:px-10">
+            <ul className="flex flex-col md:flex-row justify-between">
+              <li className="md:list-disc md:marker:text-[9px] capitalize">
+                <span className="font-medium text-sm md:text-[16px]">
+                  Material :
+                </span><span className="text-[14px]"> {product.topmaterial?.name} / {product.legmaterial?.name} .</span>
+                <span className="font-medium text-sm md:text-[16px] ml-4">
+                  Finish :
+                </span><span className="text-[14px]"> {product.topfinish?.name}</span>
+              </li>
+              <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10">
+                <span className="font-medium text-sm md:text-[16px]">
+                  Size :
+                </span><span className="text-[14px]"> {product.length} x {product.width} x {product.height} .</span>
+                <span className="font-medium text-sm md:text-[16px] ml-4">
+                  Cbm :
+                </span><span className="text-[14px]"> {product.cbm}</span>
+              </li>
+            </ul>
+          </div>
+          </div>
+
         </div>
       </div>
       {(tops?.length > 0 || edges?.length > 0 || finishes?.length > 0) && (

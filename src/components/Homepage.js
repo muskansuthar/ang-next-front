@@ -2,7 +2,7 @@
 
 // components/Homepage.js
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdSearch } from "react-icons/io";
@@ -18,6 +18,8 @@ export default function Homepage() {
 
   const [showSearch, setShowSearch] = useState(false);
   const [toggleIcon, setToggleIcon] = useState(false);
+  const [homepageimage, setHomepageimage] = useState([])
+  const [mobileimage, setMobileimage] = useState([])
   
   const [searchFields, setSearchFields] = useState("")
 
@@ -29,6 +31,17 @@ export default function Homepage() {
   const onChangeValue = (e) => {
     setSearchFields(e.target.value)
 }
+
+useEffect(() => {
+  window.scrollTo(0, 0)
+
+  fetchDataFromApi('/api/homepageimg').then(res => {
+      setHomepageimage(res?.data)
+  })
+  fetchDataFromApi('/api/mobileimg').then(res => {
+      setMobileimage(res?.data)
+  })
+}, [])
 
 const searchProducts = (event) => {
   event.preventDefault();
@@ -48,46 +61,52 @@ const searchProducts = (event) => {
 
   const text = "Defining Perfection Since";
 
+  
+  const imageBaseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/uploads/`;
+
+  const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
+
   return (
     <div className="flex">
 
       {/* Sidebar for Desktop */}
-      <div className="hidden sm:flex flex-col justify-center bg-white w-[40px] lg:w-[70px] h-[924px]">
-        <ul className=" flex justify-center list-disc transform -rotate-90 text-center space-x-12 text-[#766554] text-lg lg:text-xl font-semibold">
-          <li className="list-none">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-              Facebook
-            </a>
-          </li>
+      <div className="hidden md:flex flex-col justify-center bg-white w-[40px] lg:w-[70px] h-[924px]">
+        <ul className=" flex justify-center list-disc transform -rotate-90 text-center space-x-20 text-[#766554] text-lg lg:text-xl font-semibold">
           <li>
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
           </li>
           <li>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-              Twitter
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+              WhatsApp
             </a>
           </li>
         </ul>
       </div>
 
 
-      <div className="flex-grow flex-col md:flex-row bg-cover sm:bg-center h-[807px] sm:h-[924px] sm:bg-[url('/bg.png')]">
+      <div className="flex-grow flex-col md:flex-row bg-cover md:bg-center h-[807px] md:h-[924px]"
+      style={{
+        backgroundImage: homepageimage?.length > 0 && homepageimage[0].images.length > 0
+        ? `url(${getImageUrl(homepageimage[0].images[0])})`
+        : "none",
+      }}
+      >
 
         {/* Main Container */}
 
         <div className="flex-1 px-0">
 
           {/* Navbar for Mobile */}
-          <div className=" sm:hidden bg-[#F4F3F0] h-[120px] flex items-center justify-between px-4">
+          <div className="md:hidden bg-[#F4F3F0] h-[120px] flex items-center justify-between px-4">
             <img className="h-[90px] w-[96px]" src="/logo.png" alt="Logo" />
-            <div className="flex flex-col mt-5 w-64 xxs:ml-2 ml-0 xs:w-72">
+            <div className="flex flex-col mt-5 w-64 xxs:ml-2 ml-0 xs:w-72 sm:w-96">
               <div className="flex flex-col items-center py-2 rounded bg-white border border-[#766554]">
                 <ul className=" w-full flex justify-around text-[#766554] text-xs font-semibold list-disc">
-                  <li className="list-none">
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                      Facebook
+                  <li>
+                    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+                    WhatsApp
                     </a>
                   </li>
                   <li>
@@ -95,20 +114,16 @@ const searchProducts = (event) => {
                       Instagram
                     </a>
                   </li>
-                  <li>
-                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                      Twitter
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div className=" flex items-center justify-end relative mt-2 w-full">
-                <form className='flex w-full px-4 text-[12px] border border-[#766554] bg-white rounded' role="search">
+                <form className='flex w-full px-4 text-[12px] border border-[#766554] bg-white rounded' role="search" onSubmit={searchProducts}>
                   <input
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
                     className="focus:outline-none orm-input w-full p-0.5"
+                    onChange={onChangeValue}
                   />
                   <button className="text-sm text-[#766554]"
                     type="submit" ><IoMdSearch /></button>
@@ -122,11 +137,11 @@ const searchProducts = (event) => {
 
           {/* Right-side Menu for Mobile */}
           {toggleIcon && (
-            <div className=" sm:hidden absolute top-28 right-0 w-36 h-auto bg-white shadow-lg z-50 transition-transform transform translate-x-0">
+            <div className="md:hidden absolute top-28 right-0 w-36 h-auto bg-white shadow-lg z-50 transition-transform transform translate-x-0">
               <ul className="flex flex-col items-center p-2 space-y-4 text-[#766554] text-sm font-semibold">
                 <li><Link href="#" onClick={() => setToggleIcon(false)}>Home</Link></li>
                 <li><Link href="/featuredproducts" onClick={() => setToggleIcon(false)}>Featured Products</Link></li>
-                <li><Link href="/ourproducts" onClick={() => setToggleIcon(false)}>Products</Link></li>
+                <li><Link href="/ourproducts" onClick={() => setToggleIcon(false)}>Our Products</Link></li>
                 <li><Link href="#about-us" onClick={() => setToggleIcon(false)}>About Us</Link></li>
                 <li><Link href="#contact-us" onClick={() => setToggleIcon(false)}>Contact Us</Link></li>
               </ul>
@@ -134,7 +149,7 @@ const searchProducts = (event) => {
           )}
 
           {/* Navbar for Desktop */}
-          <div className="hidden sm:flex items-center justify-between mt-[15px] px-4">
+          <div className="hidden md:flex items-center justify-between mt-[15px] px-4">
             <div className="flex items-center justify-center bg-white w-[100px] md:w-[130px] lg:w-[175px] h-[85px] md:h-[135px] lg:h-[170px] -mx-12 lg:-mx-16 self-start">
               <Image src="/logo.png" width={157} height={146} alt="Logo" className="hidden lg:block" />
               <Image src="/logo.png" width={122} height={121} alt="Logo" className=" hidden md:block lg:hidden" />
@@ -167,36 +182,7 @@ const searchProducts = (event) => {
             </nav>
           </div>
 
-
-          {/* Content */}
-          {/* <div className=" hidden mt-64 sm:flex justify-center items-center font-normal"> */}
-          {/* Desktop Content */}
-          {/* <div className="hidden sm:flex">
-              <motion.p className="text-black text-4xl md:text-[40px] tracking-widest sm:flex sm:flex-col sm:items-center lg:flex-row lg:items-start"
-               initial="offscreen"
-               whileInView="onscreen"
-               variants={titleVariants}
-               >
-                Defining Perfection Since
-                <span className=" relative lg:bottom-5">
-                  <motion.span 
-                  className="pl-4 text-4xl md:text-[50px] font-semibold tracking-widest"
-                  initial="offscreen"
-                  whileInView="onscreen"
-                  variants={togVariants}
-                  >200</motion.span>
-                  <motion.span 
-                  className="relative bottom-[-6.5px] text-5xl md:text-[60px] font-semibold"
-                  initial="offscreen"
-                  whileInView="onscreen"
-                  variants={desVariants}
-                  >5...</motion.span>
-                </span>
-              </motion.p>
-            </div>
-          </div> */}
-
-          <div className="hidden mt-[350px] md:mt-72 lg:mt-64 sm:flex justify-center items-center font-normal">
+          <div className="hidden mt-[350px] md:mt-72 lg:mt-64 md:flex justify-center items-center font-normal">
             {/* Desktop Content */}
             <div className="hidden sm:flex">
               {/* Animate Each Letter in Text */}
@@ -229,7 +215,13 @@ const searchProducts = (event) => {
           </div>
 
           {/* Mobile Content */}
-          <div className="bg-cover bg-[url('/mobbg.jpg')] filter brightness-110 h-[686px] sm:hidden">
+          <div className="bg-cover filter brightness-110 h-[686px] md:hidden"
+          style={{
+            backgroundImage: mobileimage?.length > 0 && mobileimage[0].images.length > 0
+            ? `url(${getImageUrl(mobileimage[0].images[0])})`
+            : "none",
+          }}
+          >
             <div className="flex flex-col items-center pt-56">
               <div className=" ml-32">
                 <motion.p 

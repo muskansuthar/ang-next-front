@@ -74,7 +74,7 @@ export default function StoolDetails({ params }) {
             alt="Background"
             width={430}
             height={326}
-            className="max-w-none w-[95%] h-[650px] opacity-50 z-0"
+            className="max-w-none w-full h-[700px] opacity-20 z-0"
           />
         </div>
 
@@ -98,11 +98,10 @@ export default function StoolDetails({ params }) {
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
-                className={`absolute left-2 sm:left-10 lg:left-16 z-10 bg-white p-1 rounded-full shadow-md ${
-                  currentSlide === 0
-                    ? "opacity-50 cursor-not-allowed"
-                    : "cursor-pointer"
-                }`}
+                className={`absolute left-2 sm:left-10 lg:left-16 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide === 0
+                  ? "opacity-50 cursor-not-allowed"
+                  : "cursor-pointer"
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -142,11 +141,10 @@ export default function StoolDetails({ params }) {
               <button
                 onClick={nextSlide}
                 disabled={currentSlide >= product.images.length - 3}
-                className={`absolute right-2 sm:right-10 lg:right-16 z-10 bg-white p-1 rounded-full shadow-md ${
-                  currentSlide >= product.images.length - 3
-                    ? "opacity-50 cursor-not-allowed"
-                    : "cursor-pointer"
-                }`}
+                className={`absolute right-2 sm:right-10 lg:right-16 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide >= product.images.length - 3
+                  ? "opacity-50 cursor-not-allowed"
+                  : "cursor-pointer"
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -164,80 +162,34 @@ export default function StoolDetails({ params }) {
             </div>
           </div>
 
-          <div className="flex w-full md:ml-8 md:mt-9 flex-col items-center md:items-start">
-            {/* Product Name */}
-            <div className="w-full md:w-auto text-center md:text-left mt-6 mb-2 text-sm md:text-xl font-sans font-medium tracking-wide md:tracking-[12px]">
+          <div className="flex w-full mb-4 md:ml-4 mt-10 md:mt-16 flex-col items-center md:items-start">
+            <div className="w-full md:w-auto text-center md:text-left text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
               {product.name}
             </div>
 
-            {/* Product Details */}
-            <div className="w-full md:w-auto text-center md:text-left mt-1 mb-6 text-xs sm:text-[14px] tracking-widest capitalize">
-              <ul className="ml-4">
-                <li className="md:list-disc md:marker:text-[9px]">
+            <div className="w-full text-center md:text-left mt-1 mb-3 text-xs tracking-widest px-3 md:px-10">
+              <ul className="flex flex-col md:flex-row justify-between">
+                <li className="md:list-disc md:marker:text-[9px] capitalize">
                   <span className="font-medium text-sm md:text-[16px]">
-                    Material
-                  </span>
-                  : {product.topmaterial?.name} / {product.legmaterial?.name} .{" "}
+                    Material :
+                  </span><span className="text-[14px]"> {product.topmaterial?.name} / {product.legmaterial?.name} .</span>
                   <span className="font-medium text-sm md:text-[16px] ml-4">
-                    Finish
-                  </span>
-                  : {product.topfinish?.name}
+                    Finish :
+                  </span><span className="text-[14px]"> {product.topfinish?.name}</span>
+                </li>
+                <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10">
+                  <span className="font-medium text-sm md:text-[16px]">
+                    Size :
+                  </span><span className="text-[14px]"> {product.length} x {product.width} x {product.height} .</span>
+                  <span className="font-medium text-sm md:text-[16px] ml-4">
+                    Cbm :
+                  </span><span className="text-[14px]"> {product.cbm}</span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-
-      {/* <div className="flex flex-col gap-6 md:gap-10 lg:gap-16 bg-white px-2 pt-6 sm:pt-10 lg:pt-20 border-t border-gray-400">
-        <div className="flex flex-wrap justify-around items-center">
-          {tops?.map((top, index) => (
-            <div key={index} className="flex flex-col items-center"
-              onClick={() => setSelectedImage(top?.images?.[0])}>
-              <Image
-                src={getImageUrl(top?.images?.[0]) || "/placeholder.jpg"}
-                alt={top?.name?.name || "Top Name"}
-                width={100}
-                height={50}
-                className="w-[50px] h-[25px] md:w-[100px] md:h-[50px]"
-              />
-              <p className="pt-1 text-[10px] md:text-sm xl:text-base">{top?.name?.name}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap justify-around items-center">
-          {edges?.map((edge, index) => (
-            <div key={index} className="flex flex-col items-center"
-              onClick={() => setSelectedImage(edge?.images?.[0])}>
-              <Image
-                src={getImageUrl(edge?.images?.[0]) || "/placeholder.jpg"}
-                alt={edge?.name?.name || "Edge Name"}
-                width={100}
-                height={18}
-                className="w-[70px] h-[10px] md:w-[100px] md:h-[18px]"
-              />
-              <p className="pt-1 text-[10px] md:text-sm xl:text-base">{edge?.name?.name}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap justify-around items-center mb-8">
-          {finishes?.map((finish, index) => (
-            <div key={index} className="flex flex-col items-center"
-              onClick={() => setSelectedImage(finish?.images?.[0])}>
-              <Image
-                src={getImageUrl(finish?.images?.[0]) || "/placeholder.jpg"}
-                alt={finish?.name?.name || "Finish Name"}
-                width={100}
-                height={80}
-                className="w-[50px] h-[40px] md:w-[100px] md:h-[80px]"
-              />
-              <p className="pt-1 text-[10px] md:text-sm xl:text-base">{finish?.name?.name}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
 
       {(tops?.length > 0 || edges?.length > 0 || finishes?.length > 0) && (
         <div className="flex flex-col gap-6 md:gap-10 lg:gap-16 bg-white px-2 pt-6 sm:pt-10 lg:pt-20 border-t border-gray-400">

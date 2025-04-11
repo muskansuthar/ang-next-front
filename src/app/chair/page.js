@@ -8,7 +8,7 @@ import { MyContext } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { togVariants, headVariants, slideInRight } from "@/utils/animation";
 
-export default function Stool() {
+export default function Chair() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [products, setProducts] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
@@ -32,7 +32,7 @@ export default function Stool() {
   useEffect(() => {
     window.scrollTo(0, 0)
 
-    fetchDataFromApi("/api/category/search?name=Stool").then((res) => {
+    fetchDataFromApi("/api/category/search?name=Chair").then((res) => {
       setCategoryData(res?.categoryList);
     });
 }, [])
@@ -45,7 +45,7 @@ export default function Stool() {
         topfinish: "",
         legfinish: ""
       });
-      fetchDataFromApi("/api/products/filter?category=Stool").then((res) => {
+      fetchDataFromApi("/api/products/filter?category=Chair").then((res) => {
         setProducts(res.products);
         setOpenDropdown(null);
 
@@ -76,7 +76,7 @@ export default function Stool() {
       );
 
       const queryParams = new URLSearchParams(cleanedFilters).toString();
-      const res = await fetchDataFromApi(`/api/products/filter?category=Stool&${queryParams}`);
+      const res = await fetchDataFromApi(`/api/products/filter?category=Chair&${queryParams}`);
       setProducts(res.products);
     };
 
@@ -112,7 +112,7 @@ export default function Stool() {
   return (
     <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
       <div className="flex flex-wrap mt-3">
-        <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white] lg:px-10">
+        <div className="w-full lg:w-8/12 shadow-[100px_0px_50px_15px_white] lg:px-10">
           <div className="hidden lg:block h-[85px]"></div>
           <motion.div
             className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px] uppercase"
@@ -123,7 +123,7 @@ export default function Stool() {
             {categoryData[0]?.name}
           </motion.div>
           <motion.p
-            className="text-center font-thin text-xs sm:text-lg mt-4 mb-4 sm:px-10 md:px-20 lg:px-0 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+            className="text-center font-thin text-xs sm:text-lg mt-4 xs:px-4 sm:px-10 md:px-24 lg:px-0 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
             initial="offscreen"
             whileInView="onscreen"
             variants={togVariants}
@@ -132,7 +132,7 @@ export default function Stool() {
           </motion.p>
         </div>
         <motion.div
-          className="w-full lg:w-5/12 flex items-center justify-center lg:justify-end -z-10"
+          className="w-full lg:w-4/12 flex items-center justify-center lg:justify-end -z-10"
           initial="offscreen"
           whileInView="onscreen"
           variants={slideInRight}
@@ -140,7 +140,7 @@ export default function Stool() {
           <Image
             src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
             alt="Stool Image"
-            className="sm:w-[85%] h-[200px] xs:h-[250px] sm:h-[300px] lg:ml-2"
+            className="sm:w-[75%] h-[200px] xs:h-[250px] sm:h-[300px] lg:ml-6"
             width={500}
             height={500}
           />
@@ -180,7 +180,7 @@ export default function Stool() {
           products?.map((product) => (
             <Link
               key={product._id}
-              href={`/stool/${product._id}`}
+              href={`/chair/${product._id}`}
               className="flex flex-col items-center justify-center border p-1 md:p-4 h-36 sm:h-44 md:h-56 lg:h-64 xl:h-72 2xl:h-80 text-center hover:scale-105 transition-transform"
             >
               <div className="flex-grow flex items-center justify-center w-[50%] md:w-[80%]">

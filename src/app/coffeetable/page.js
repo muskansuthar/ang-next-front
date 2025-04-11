@@ -30,6 +30,38 @@ export default function Coffeetable() {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+
+    fetchDataFromApi("/api/category/search?name=Coffee Table").then((res) => {
+      setCategoryData(res?.categoryList);
+    });
+}, [])
+  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      // Remove empty values from the filters object
+      const cleanedFilters = Object.fromEntries(
+        Object.entries(filters).filter(([_, value]) => value !== "")
+      );
+      
+      const queryParams = new URLSearchParams(cleanedFilters).toString();
+      const res = await fetchDataFromApi(`/api/products/filter?category=Coffee Table&${queryParams}`);
+      setProducts(res.products);
+    };
+    
+    fetchProducts();
+  }, [filters]);
+  
+  useEffect(() => {
+    if (context) {
+      setLegfinishData(context.legfinishData || []);
+      setLegmaterialData(context.legmaterialData || []);
+      setTopfinishData(context.topfinishData || []);
+      setTopmaterialData(context.topmaterialData || []);
+    }
+  }, [context]);
+  
   const handleOptionClick = (label, value) => {
     if (value === "all") {
       setFilters({
@@ -61,31 +93,6 @@ export default function Coffeetable() {
     }
   };
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      // Remove empty values from the filters object
-      const cleanedFilters = Object.fromEntries(
-        Object.entries(filters).filter(([_, value]) => value !== "")
-      );
-
-      const queryParams = new URLSearchParams(cleanedFilters).toString();
-      const res = await fetchDataFromApi(`/api/products/filter?category=Coffee Table&${queryParams}`);
-      setProducts(res.products);
-    };
-
-    fetchProducts();
-  }, [filters]);
-
-  useEffect(() => {
-    if (context) {
-      setCategoryData(context.categoryData || []);
-      setLegfinishData(context.legfinishData || []);
-      setLegmaterialData(context.legmaterialData || []);
-      setTopfinishData(context.topfinishData || []);
-      setTopmaterialData(context.topmaterialData || []);
-    }
-  }, [context]);
-
   const filterOptions = {
     "Top Material": topMaterialData,
     "Leg Material": legMaterialData,
@@ -94,9 +101,9 @@ export default function Coffeetable() {
     "Category": [
       { _id: "all", name: "Coffee Table" }, // Add "All" option
     ],
-    "Knocked Down": [
+    "Remove Filters": [
       { _id: "all", name: "All Products" }, // Add "All" option
-    ],
+    ]
   };
 
   const imageBaseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/uploads/`;
@@ -106,18 +113,18 @@ export default function Coffeetable() {
   return (
     <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
       <div className="flex flex-wrap mt-3">
-        <div className="w-full lg:w-6/12 shadow-[100px_0px_50px_15px_white]">
+        <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white] lg:px-10">
           <div className="hidden lg:block h-[85px]"></div>
           <motion.div
-            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px]"
+            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px] uppercase"
             initial="offscreen"
             whileInView="onscreen"
             variants={headVariants}
           >
-            COFFEE TABLE
+            {categoryData[0]?.name}
           </motion.div>
           <motion.p
-            className="text-center font-thin text-xs sm:text-lg mt-4 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+            className="text-center font-thin text-xs sm:text-lg mt-4 mb-4 xs:px-4 sm:px-10 md:px-20 lg:px-0 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
             initial="offscreen"
             whileInView="onscreen"
             variants={togVariants}
@@ -126,22 +133,22 @@ export default function Coffeetable() {
           </motion.p>
         </div>
         <motion.div
-          className="w-full lg:w-6/12 flex items-center justify-end -z-10"
+          className="w-full lg:w-5/12 flex items-center justify-center lg:justify-end -z-10"
           initial="offscreen"
           whileInView="onscreen"
           variants={slideInRight}
         >
           <Image
-            src="/coffeetable.png"
+            src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
             alt="Coffee Table"
-            className="sm:w-[90%] sm:h-[320px]"
+            className="sm:w-[85%] h-[200px] xs:h-[250px] sm:h-[320px] lg:ml-2"
             width={500}
             height={500}
           />
         </motion.div>
       </div>
 
-      <div className="my-4 px-auto grid grid-cols-3 xl:grid-cols-6 text-center xl:text-start">
+      <div className="my-4 px-auto grid grid-cols-3 md:grid-cols-6 text-center xl:text-start">
         {Object.entries(filterOptions).map(([label, options]) => (
           <div key={label} className="relative flex justify-center">
             <button
@@ -186,7 +193,7 @@ export default function Coffeetable() {
                   className="w-3/4 mx-auto"
                 />
               </div>
-              <div className="text-xs sm:text-sm lg:text-[17px] sm:tracking-[3px] mt-auto">
+              <div className="w-full text-xs sm:text-sm lg:text-[17px] sm:tracking-[3px] mt-auto">
                 {product.name}
               </div>
             </Link>

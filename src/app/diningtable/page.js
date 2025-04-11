@@ -30,6 +30,15 @@ export default function DiningTablePage() {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+
+    fetchDataFromApi("/api/category/search?name=Dining Table").then((res) => {
+      setCategoryData(res?.categoryList);
+    });
+}, [])
+
   const handleOptionClick = (label, value) => {
     if (value === "all") {
       setFilters({
@@ -78,7 +87,6 @@ export default function DiningTablePage() {
 
   useEffect(() => {
     if (context) {
-      setCategoryData(context.categoryData || []);
       setLegfinishData(context.legfinishData || []);
       setLegmaterialData(context.legmaterialData || []);
       setTopfinishData(context.topfinishData || []);
@@ -94,9 +102,9 @@ export default function DiningTablePage() {
     "Category": [
       { _id: "all", name: "Dining Table" }, // Add "All" option
     ],
-    "Knocked Down": [
+    "Remove Filters": [
       { _id: "all", name: "All Products" }, // Add "All" option
-    ],
+    ]
   };
 
   const imageBaseUrl = `${process.env.NEXT_PUBLIC_APP_BASE_URL}/uploads/`;
@@ -107,7 +115,7 @@ export default function DiningTablePage() {
     <div className="w-screen pb-10 h-auto font-sans">
       <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap mt-3">
-          <div className="w-full lg:w-6/12 shadow-[100px_0px_50px_15px_white]">
+          <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white]">
             <div className="hidden md:block h-[85px]"></div>
             <motion.div
               className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px]"
@@ -115,10 +123,10 @@ export default function DiningTablePage() {
               whileInView="onscreen"
               variants={headVariants}
             >
-              Dining Tables
+              {categoryData[0]?.name}
             </motion.div>
             <motion.p
-              className="text-center font-thin text-xs sm:text-lg mt-4 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+              className="text-center font-thin text-xs sm:text-lg mt-4 sm:px-10 lg:px-0 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
               initial="offscreen"
               whileInView="onscreen"
               variants={togVariants}
@@ -129,22 +137,22 @@ export default function DiningTablePage() {
             </motion.p>
           </div>
           <motion.div
-            className="w-full lg:w-6/12 flex items-center -z-10"
+            className="w-full lg:w-5/12 flex items-center justify-center lg:justify-end -z-10"
             initial="offscreen"
             whileInView="onscreen"
             variants={slideInRight}
           >
             <Image
-              src="/DTDisplay.png"
+              src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
               alt="Dining Table"
-              className="w-full border-ridge"
+              className="sm:w-[90%] h-[200px] xs:h-[250px] sm:h-[300px] border-ridge lg:ml-10"
               width={500}
               height={500}
             />
           </motion.div>
         </div>
 
-        <div className="my-4 px-auto grid grid-cols-3 xl:grid-cols-6 text-center xl:text-start">
+        <div className="my-4 px-auto grid grid-cols-3 md:grid-cols-6 text-center xl:text-start">
           {Object.entries(filterOptions).map(([label, options]) => (
             <div key={label} className="relative flex justify-center">
               <button
@@ -189,7 +197,7 @@ export default function DiningTablePage() {
                     className="w-full mx-auto"
                   />
                 </div>
-                <div className="text-xs sm:text-[17px] sm:tracking-[3px] mt-auto">
+                <div className="w-full text-xs sm:text-[17px] sm:tracking-[3px] mt-auto">
                   {product.name}
                 </div>
               </Link>

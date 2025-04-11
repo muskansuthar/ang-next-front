@@ -21,19 +21,19 @@ const ThemeProvider = ({ children }) => {
   useEffect(() => {
 
     fetchDataFromApi("/api/category").then((res) => {
-      setCategoryData(res.categoryList);
+      setCategoryData(res?.categoryList);
     });
     fetchDataFromApi("/api/legfinish").then((res) => {
-      setLegfinishData(res.legFinishes);
+      setLegfinishData(res?.legFinishes);
     });
     fetchDataFromApi("/api/legmaterial").then((res) => {
-      setLegmaterialData(res.legMaterials);
+      setLegmaterialData(res?.legMaterials);
     });
     fetchDataFromApi("/api/topfinish").then((res) => {
-      setTopfinishData(res.topFinishes);
+      setTopfinishData(res?.topFinishes);
     });
     fetchDataFromApi("/api/topmaterial").then((res) => {
-      setTopmaterialData(res.topMaterials);
+      setTopmaterialData(res?.topMaterials);
     });
   }, []);
 

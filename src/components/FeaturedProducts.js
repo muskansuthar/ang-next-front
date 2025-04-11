@@ -42,7 +42,7 @@ export default function FeaturedProducts() {
   const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
 
   return (
-    <div className="block bg-[#F4F3F0] w-full overflow-x-hidden h-[100vh] sm:h-auto pb-9 sm:pb-20 xl:pb-28">
+    <div className="block bg-[#F4F3F0] w-full overflow-x-hidden h-[100vh] sm:h-auto pb-9 sm:pb-20 xl:pb-28 2xl:container 2xl:mx-auto">
       {/* Title */}
       <div className="flex justify-center items-center bg-white h-10 sm:h-20 mt-8 w-52 sm:w-[480px]">
         <motion.p className="text-lg sm:text-[27px] font-normal tracking-wider sm:tracking-[7.2px]"
@@ -120,12 +120,12 @@ export default function FeaturedProducts() {
           </div>
 
           <Link href={`/diningdetails/${featuredProducts[currentIndex]?._id}`} passHref>
-            <motion.div className="w-full self-end flex justify-center mt-2"
+            <motion.div className="w-full px-4 self-end flex justify-center mt-2"
              initial="offscreen"
              whileInView="onscreen"
              variants={titleVariants}
              >
-              <p className="tracking-[10px] text-[#766554] text-sm xs:text-lg sm:text-2xl font-normal">
+              <p className="sm:tracking-[10px] text-[#766554] text-center text-sm xs:text-lg sm:text-2xl font-normal">
                 {featuredProducts[currentIndex]?.name || "Product Name"}
               </p>
             </motion.div>
