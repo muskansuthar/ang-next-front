@@ -106,10 +106,10 @@ export default function DiningTableleg() {
   return (
     <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
       <div className="flex flex-wrap mt-3">
-        <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white]">
-          <div className="hidden lg:block h-[85px]"></div>
+        <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white]">
+          <div className="hidden md:block h-[40px] lg:h-[85px]"></div>
           <motion.div
-            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px]"
+            className="flex justify-center font-thin text-2xl md:text-4xl tracking-wide lg:tracking-[12px]"
             initial="offscreen"
             whileInView="onscreen"
             variants={headVariants}
@@ -117,7 +117,7 @@ export default function DiningTableleg() {
             {categoryData[0]?.name}
           </motion.div>
           <motion.p
-            className="text-center font-thin text-xs sm:text-lg mt-4 mb-4 sm:px-10 md:px-20 lg:px-0 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+            className="text-center font-thin text-xs sm:text-base md:text-lg mt-4 mb-4 sm:px-10 xs:px-2 md:px-8 lg:px-0 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
             initial="offscreen"
             whileInView="onscreen"
             variants={togVariants}
@@ -126,18 +126,21 @@ export default function DiningTableleg() {
           </motion.p>
         </div>
         <motion.div
-          className="w-full lg:w-5/12 flex items-center justify-center lg:justify-end -z-10"
+          className="w-full xs:w-5/12 flex items-center justify-center lg:justify-end -z-10"
           initial="offscreen"
           whileInView="onscreen"
           variants={slideInRight}
         >
+          <div className="relative w-[80%] aspect-[4/3] border-ridge lg:ml-10">
           <Image
             src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
             alt="Metal Leg"
-            className="sm:w-[90%] h-[200px] xs:h-[250px] sm:h-[300px] lg:ml-10"
+            className="object-cover"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 35vw"
             width={500}
             height={500}
           />
+            </div>
         </motion.div>
       </div>
 

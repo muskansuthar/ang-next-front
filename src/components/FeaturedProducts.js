@@ -89,7 +89,7 @@ export default function FeaturedProducts() {
                 onClick={prevImage}
               />
 
-              <Link href={`/diningtable/${featuredProducts[currentIndex]?._id}`} passHref>
+              {/* <Link href={`/diningtable/${featuredProducts[currentIndex]?._id}`} passHref>
                 <div className="flex justify-between items-center rounded-full bg-white w-[55vw] md:w-[500px] h-[55vw] md:h-[500px] cursor-pointer z-10">
                   <Image
                     src={getImageUrl(featuredProducts[currentIndex]?.images[0])}
@@ -99,7 +99,21 @@ export default function FeaturedProducts() {
                     className="block max-w-none cursor-pointer z-20 mx-auto"
                   />
                 </div>
-              </Link>
+              </Link> */}
+
+<Link href={`/diningtable/${featuredProducts[currentIndex]?._id}`} passHref>
+  <div className="relative flex justify-center items-center rounded-full bg-white w-[55vw] md:w-[500px] h-[55vw] md:h-[500px] cursor-pointer z-10 overflow-hidden">
+    <div className="absolute w-[90%] h-[90%] aspect-square">
+      <Image
+        src={getImageUrl(featuredProducts[currentIndex]?.images[0])}
+        fill
+        alt="Current Image"
+        className="object-contain cursor-pointer z-20"
+        sizes="(max-width: 768px) 55vw, 500px"
+      />
+    </div>
+  </div>
+</Link>
 
               <BsArrowRight
                 className="relative right-3 text-4xl sm:text-5xl bg-[#dddbd6] text-[#766554] rounded-full p-2 opacity-70 cursor-pointer"

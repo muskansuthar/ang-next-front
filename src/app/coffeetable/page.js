@@ -112,11 +112,11 @@ export default function Coffeetable() {
 
   return (
     <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
-      <div className="flex flex-wrap mt-3">
-        <div className="w-full lg:w-7/12 shadow-[100px_0px_50px_15px_white] lg:px-10">
+      <div className="flex flex-wrap mt-3 items-center">
+        <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white] lg:px-10">
           <div className="hidden lg:block h-[85px]"></div>
           <motion.div
-            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px] uppercase"
+            className="flex justify-center font-thin text-2xl md:text-4xl tracking-wide sm:tracking-[12px] uppercase"
             initial="offscreen"
             whileInView="onscreen"
             variants={headVariants}
@@ -124,7 +124,7 @@ export default function Coffeetable() {
             {categoryData[0]?.name}
           </motion.div>
           <motion.p
-            className="text-center font-thin text-xs sm:text-lg mt-4 mb-4 xs:px-4 sm:px-10 md:px-20 lg:px-0 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+            className="text-center font-thin text-xs sm:text-base md:text-lg mt-4 mb-4 xs:px-2 sm:px-10 md:px-8 lg:px-0 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
             initial="offscreen"
             whileInView="onscreen"
             variants={togVariants}
@@ -132,8 +132,8 @@ export default function Coffeetable() {
             Delve into a curated selection of the finest coffee table designs, meticulously crafted to elevate your living space, offering visual appeal and functionality that enhances your daily living experience.
           </motion.p>
         </div>
-        <motion.div
-          className="w-full lg:w-5/12 flex items-center justify-center lg:justify-end -z-10"
+        {/* <motion.div
+          className="w-full md:w-5/12 flex items-center justify-center lg:justify-end -z-10"
           initial="offscreen"
           whileInView="onscreen"
           variants={slideInRight}
@@ -145,7 +145,23 @@ export default function Coffeetable() {
             width={500}
             height={500}
           />
-        </motion.div>
+        </motion.div> */}
+        <motion.div
+  className="w-full xs:w-5/12 flex items-center justify-center lg:justify-end -z-10"
+  initial="offscreen"
+  whileInView="onscreen"
+  variants={slideInRight}
+>
+  <div className="relative w-[90%] aspect-[4/3] lg:ml-2">
+    <Image
+      src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
+      alt="Coffee Table"
+      fill
+      className="object-contain"
+      sizes="(max-width: 640px) 85vw, (max-width: 768px) 45vw, 35vw"
+    />
+  </div>
+</motion.div>
       </div>
 
       <div className="my-4 px-auto grid grid-cols-3 md:grid-cols-6 text-center xl:text-start">

@@ -112,10 +112,10 @@ export default function Chair() {
   return (
     <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
       <div className="flex flex-wrap mt-3">
-        <div className="w-full lg:w-8/12 shadow-[100px_0px_50px_15px_white] lg:px-10">
-          <div className="hidden lg:block h-[85px]"></div>
+        <div className="w-full xs:w-8/12 lg:shadow-[100px_0px_50px_15px_white] lg:px-10">
+          <div className="hidden md:block h-[20px] lg:h-[85px]"></div>
           <motion.div
-            className="flex justify-center font-thin text-3xl sm:text-4xl tracking-wide sm:tracking-[12px] uppercase"
+            className="flex justify-center font-thin text-2xl md:text-4xl tracking-wide sm:tracking-[12px] uppercase"
             initial="offscreen"
             whileInView="onscreen"
             variants={headVariants}
@@ -123,27 +123,30 @@ export default function Chair() {
             {categoryData[0]?.name}
           </motion.div>
           <motion.p
-            className="text-center font-thin text-xs sm:text-lg mt-4 xs:px-4 sm:px-10 md:px-24 lg:px-0 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+            className="text-center font-thin text-xs sm:text-base md:text-lg mt-4 xs:px-4 xs:px-2 md:px-8 lg:px-0 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
             initial="offscreen"
             whileInView="onscreen"
             variants={togVariants}
           >
-            Our stool collection showcases a harmonious fusion of natural elegance and industrial aesthetics, offering a diverse range of options to complement your space.
+            Our chair collection showcases a harmonious fusion of natural elegance and industrial aesthetics, offering a diverse range of options to complement your space.
           </motion.p>
         </div>
         <motion.div
-          className="w-full lg:w-4/12 flex items-center justify-center lg:justify-end -z-10"
+          className="w-full xs:w-4/12 flex items-center justify-center lg:justify-end -z-10"
           initial="offscreen"
           whileInView="onscreen"
           variants={slideInRight}
         >
+          <div className="relative w-[70%] aspect-[5/3] border-ridge lg:ml-10">
           <Image
             src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
             alt="Stool Image"
-            className="sm:w-[75%] h-[200px] xs:h-[250px] sm:h-[300px] lg:ml-6"
+            className="object-cover"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 35vw"
             width={500}
             height={500}
           />
+          </div>
         </motion.div>
       </div>
 
