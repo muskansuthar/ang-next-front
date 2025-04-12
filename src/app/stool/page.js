@@ -115,7 +115,7 @@ export default function Stool() {
         <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white] lg:px-10">
           <div className="hidden lg:block h-[85px]"></div>
           <motion.div
-            className="flex justify-center font-thin text-2xl md:text-4xl tracking-wide sm:tracking-[12px] uppercase"
+            className="flex justify-center font-normal md:font-thin text-2xl md:text-4xl tracking-wide sm:tracking-[12px] uppercase"
             initial="offscreen"
             whileInView="onscreen"
             variants={headVariants}
@@ -123,7 +123,7 @@ export default function Stool() {
             {categoryData[0]?.name}
           </motion.div>
           <motion.p
-            className="text-center font-thin text-xs sm:text-base md:text-lg mt-4 mb-4 xs:px-2 md:px-8 lg:px-0 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
+            className="text-center font-normal md:font-thin text-xs sm:text-base md:text-lg mt-4 mb-4 xs:px-2 md:px-8 lg:px-0 mb-4 lg:mb-16 tracking-[1.88px] capitalize leading-[1.7]"
             initial="offscreen"
             whileInView="onscreen"
             variants={togVariants}
