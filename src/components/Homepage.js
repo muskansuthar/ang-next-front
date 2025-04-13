@@ -73,7 +73,7 @@ const searchProducts = (event) => {
       <div className="hidden md:flex flex-col justify-center bg-white w-[40px] lg:w-[70px] h-[924px]">
         <ul className=" flex justify-center list-disc transform -rotate-90 text-center space-x-20 text-[#766554] text-lg lg:text-xl font-semibold">
           <li>
-            <a href="" target="_blank" rel="noopener noreferrer">
+            <a target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
           </li>
@@ -105,12 +105,12 @@ const searchProducts = (event) => {
               <div className="flex flex-col items-center py-2 rounded bg-white border border-[#766554]">
                 <ul className=" w-full flex justify-around text-[#766554] text-xs font-semibold list-disc">
                   <li>
-                    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/918003888970" target="_blank" rel="noopener noreferrer">
                     WhatsApp
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a target="_blank" rel="noopener noreferrer">
                       Instagram
                     </a>
                   </li>
