@@ -78,7 +78,7 @@ const searchProducts = (event) => {
             </a>
           </li>
           <li>
-            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/918003888970" target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
           </li>
