@@ -73,7 +73,7 @@ const searchProducts = (event) => {
       <div className="hidden md:flex flex-col justify-center bg-white w-[40px] lg:w-[70px] h-[924px]">
         <ul className=" flex justify-center list-disc transform -rotate-90 text-center space-x-20 text-[#766554] text-lg lg:text-xl font-semibold">
           <li>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="" target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
           </li>

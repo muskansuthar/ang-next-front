@@ -3,18 +3,15 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "4000",
-        pathname: "/uploads/**",
+        protocol: 'https',
+        hostname: '**', // Allows all HTTPS domains
       },
       {
-        protocol: "https",
-        hostname: "ang-next-back.onrender.com",
-        pathname: "/uploads/**",
+        protocol: 'http',
+        hostname: '**', // Allows all HTTP domains
       },
     ],
-  },
+  }
 };
 
 export default nextConfig;
