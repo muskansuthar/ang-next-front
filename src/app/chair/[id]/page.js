@@ -20,26 +20,6 @@ export default function StoolDetails({ params }) {
         setProduct(res);
         setSelectedImage(res?.images?.[0]);
       });
-
-      fetchDataFromApi(`/api/productedge/productedges?productId=${id}`).then(
-        (res) => {
-          setEdges(res?.edge?.edges);
-        }
-      );
-
-      // Fetch product tops
-      fetchDataFromApi(`/api/producttop/producttops?productId=${id}`).then(
-        (res) => {
-          setTops(res?.top?.tops);
-        }
-      );
-
-      // Fetch product finishes
-      fetchDataFromApi(
-        `/api/productfinish/productfinishes?productId=${id}`
-      ).then((res) => {
-        setFinishes(res?.finish?.finishes);
-      });
     }
   }, [id]);
 

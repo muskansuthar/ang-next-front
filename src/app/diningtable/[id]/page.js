@@ -19,24 +19,6 @@ export default function DiningDetails({ params }) {
         setProduct(res);
         setSelectedImage(res?.images?.[0]);
       });
-
-      fetchDataFromApi(`/api/productedge/productedges?productId=${id}`).then(
-        (res) => {
-          setEdges(res?.edge?.edges);
-        }
-      );
-
-      fetchDataFromApi(`/api/producttop/producttops?productId=${id}`).then(
-        (res) => {
-          setTops(res?.top?.tops);
-        }
-      );
-
-      fetchDataFromApi(
-        `/api/productfinish/productfinishes?productId=${id}`
-      ).then((res) => {
-        setFinishes(res?.finish?.finishes);
-      });
     }
   }, [id]);
 
