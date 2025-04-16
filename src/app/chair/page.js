@@ -161,13 +161,13 @@ export default function Chair() {
             </button>
 
             {openDropdown === label && options.length > 0 && (
-              <div className="flex flex-col items-center absolute mt-10 w-24 z-10 sm:w-32 bg-white border border-gray-200 rounded-md shadow-lg">
+              <div className="flex flex-col items-center absolute mt-10 w-24 z-10 sm:w-44 bg-white border border-gray-200 rounded-md shadow-lg">
                 {options.map((option) => (
                   <button
                     key={option._id}
                     value={option._id}
                     onClick={() => handleOptionClick(label.toLowerCase().replace(" ", ""), option._id)}
-                    className="block sm:px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-center"
+                    className="block sm:px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-center text-xs sm:text-base"
                   >
                     {option.name}
                   </button>

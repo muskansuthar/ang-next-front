@@ -36,23 +36,23 @@ export default function Coffeetable() {
     fetchDataFromApi("/api/category/search?name=Coffee Table").then((res) => {
       setCategoryData(res?.categoryList);
     });
-}, [])
-  
+  }, [])
+
   useEffect(() => {
     const fetchProducts = async () => {
       // Remove empty values from the filters object
       const cleanedFilters = Object.fromEntries(
         Object.entries(filters).filter(([_, value]) => value !== "")
       );
-      
+
       const queryParams = new URLSearchParams(cleanedFilters).toString();
       const res = await fetchDataFromApi(`/api/products/filter?category=Coffee Table&${queryParams}`);
       setProducts(res.products);
     };
-    
+
     fetchProducts();
   }, [filters]);
-  
+
   useEffect(() => {
     if (context) {
       setLegfinishData(context.legfinishData || []);
@@ -61,7 +61,7 @@ export default function Coffeetable() {
       setTopmaterialData(context.topmaterialData || []);
     }
   }, [context]);
-  
+
   const handleOptionClick = (label, value) => {
     if (value === "all") {
       setFilters({
@@ -132,36 +132,22 @@ export default function Coffeetable() {
             Delve into a curated selection of the finest coffee table designs, meticulously crafted to elevate your living space, offering visual appeal and functionality that enhances your daily living experience.
           </motion.p>
         </div>
-        {/* <motion.div
-          className="w-full md:w-5/12 flex items-center justify-center lg:justify-end -z-10"
+        <motion.div
+          className="w-full xs:w-5/12 flex items-center justify-center lg:justify-end -z-10"
           initial="offscreen"
           whileInView="onscreen"
           variants={slideInRight}
         >
-          <Image
-            src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
-            alt="Coffee Table"
-            className="sm:w-[85%] h-[200px] xs:h-[250px] sm:h-[320px] lg:ml-2"
-            width={500}
-            height={500}
-          />
-        </motion.div> */}
-        <motion.div
-  className="w-full xs:w-5/12 flex items-center justify-center lg:justify-end -z-10"
-  initial="offscreen"
-  whileInView="onscreen"
-  variants={slideInRight}
->
-  <div className="relative w-[90%] aspect-[4/3] lg:ml-2">
-    <Image
-      src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
-      alt="Coffee Table"
-      fill
-      className="object-contain"
-      sizes="(max-width: 640px) 85vw, (max-width: 768px) 45vw, 35vw"
-    />
-  </div>
-</motion.div>
+          <div className="relative w-[90%] aspect-[4/3] lg:ml-2">
+            <Image
+              src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
+              alt="Coffee Table"
+              fill
+              className="object-contain"
+              sizes="(max-width: 640px) 85vw, (max-width: 768px) 45vw, 35vw"
+            />
+          </div>
+        </motion.div>
       </div>
 
       <div className="my-4 px-auto grid grid-cols-3 md:grid-cols-6 text-center xl:text-start">
@@ -175,13 +161,13 @@ export default function Coffeetable() {
             </button>
 
             {openDropdown === label && options.length > 0 && (
-              <div className="flex flex-col items-center absolute mt-10 w-24 z-10 sm:w-32 bg-white border border-gray-200 rounded-md shadow-lg">
+              <div className="flex flex-col items-center absolute mt-10 w-24 z-10 sm:w-44 bg-white border border-gray-200 rounded-md shadow-lg">
                 {options.map((option) => (
                   <button
                     key={option._id}
                     value={option._id}
                     onClick={() => handleOptionClick(label.toLowerCase().replace(" ", ""), option._id)}
-                    className="block sm:px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-center"
+                    className="block sm:px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-center text-xs sm:text-base"
                   >
                     {option.name}
                   </button>
