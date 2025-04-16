@@ -54,11 +54,10 @@ export default function DiningDetails({ params }) {
               <button
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
-                className={`absolute md:rotate-90 left-0 sm:left-10 md:left-auto md:top-[-25px] md:-translate-y-1/2 z-10 bg-white p-1 rounded-full shadow-md ${
-                  currentSlide === 0
+                className={`absolute md:rotate-90 left-0 sm:left-10 md:left-auto md:top-[-25px] md:-translate-y-1/2 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide === 0
                     ? "opacity-50 cursor-not-allowed"
                     : "cursor-pointer"
-                }`}
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,11 +97,10 @@ export default function DiningDetails({ params }) {
               <button
                 onClick={nextSlide}
                 disabled={currentSlide >= product.images.length - 3}
-                className={`absolute right-0 sm:right-10 md:rotate-90 md:right-auto md:bottom-[-25px] md:translate-y-1/2 z-10 bg-white p-1 rounded-full shadow-md ${
-                  currentSlide >= product.images.length - 3
+                className={`absolute right-0 sm:right-10 md:rotate-90 md:right-auto md:bottom-[-25px] md:translate-y-1/2 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide >= product.images.length - 3
                     ? "opacity-50 cursor-not-allowed"
                     : "cursor-pointer"
-                }`}
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +142,10 @@ export default function DiningDetails({ params }) {
         </div>
 
         {/* Product Name */}
-        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-20 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
+        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
+          Product Code : {product.code}
+        </div>
+        <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
           {product.name}
         </div>
 
@@ -159,7 +160,7 @@ export default function DiningDetails({ params }) {
                 Finish :
               </span><span className="text-[14px]"> {product.topfinish?.name}</span>
             </li>
-            <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10">
+            <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10 md:ml-4">
               <span className="font-medium text-sm md:text-[16px]">
                 Size :
               </span><span className="text-[14px]"> {product.length} x {product.width} x {product.height} .</span>

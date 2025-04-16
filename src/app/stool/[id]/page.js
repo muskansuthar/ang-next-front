@@ -142,8 +142,11 @@ export default function StoolDetails({ params }) {
             </div>
           </div>
 
-          <div className="flex w-full mb-4 md:ml-4 mt-10 md:mt-16 flex-col items-center md:items-start">
-            <div className="w-full md:w-auto text-center md:text-left text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
+          <div className="flex w-full mb-4 md:ml-4 flex-col items-center md:items-start">
+            <div className="w-full md:w-auto text-center md:text-left md:mt-4 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
+              Product Code : {product.code}
+            </div>
+            <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
               {product.name}
             </div>
 
@@ -157,7 +160,7 @@ export default function StoolDetails({ params }) {
                     Finish :
                   </span><span className="text-[14px]"> {product.topfinish?.name}</span>
                 </li>
-                <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10">
+                <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10 md:ml-4">
                   <span className="font-medium text-sm md:text-[16px]">
                     Size :
                   </span><span className="text-[14px]"> {product.length} x {product.width} x {product.height} .</span>

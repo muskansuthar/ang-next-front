@@ -114,23 +114,26 @@ export default function DiningTableLegDetail({ params }) {
                     <div className="hidden md:block w-full h-12"></div>
 
                     <div className="flex w-full flex-col items-center md:items-start">
-                        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-20 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
+                        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
+                            Product Code : {product.code}
+                        </div>
+                        <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
                             {product.name}
                         </div>
 
                         <div className="w-full text-center md:text-left mt-1 mb-3 text-xs tracking-widest px-3 md:px-10">
                             <ul className="flex flex-col md:flex-row justify-between">
                                 <li className="md:list-disc md:marker:text-[9px] capitalize">
-                                    <span className="font-medium text-sm md:text-[16px]">Material :</span ><span className="text-[14px]"> {product.legmaterial?.name} .</span> 
+                                    <span className="font-medium text-sm md:text-[16px]">Material :</span ><span className="text-[14px]"> {product.legmaterial?.name} .</span>
                                     <span className="font-medium text-sm md:text-[16px] ml-4">Finish :</span><span className="text-[14px]"> {product.legfinish?.name}</span>
                                 </li>
-                                <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10">
+                                <li className="md:list-disc md:marker:text-[9px] mt-2 md:mt-0 z-10 md:ml-4">
                                     <span className="font-medium text-sm md:text-[16px]">
                                         Size :
                                     </span><span className="text-[14px]"> {product.length} x {product.width} x {product.height} .</span>
                                     <span className="font-medium text-sm md:text-[16px] ml-4">
                                         Cbm :
-                                    </span><span className="text-[14px]"> {product.cbm}</span> 
+                                    </span><span className="text-[14px]"> {product.cbm}</span>
                                 </li>
                             </ul>
                         </div>

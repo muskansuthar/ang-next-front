@@ -30,7 +30,7 @@ export default function FeaturedProducts() {
   };
 
   if (featuredProducts.length === 0) {
-    return 
+    return
   }
 
   const prevIndex = currentIndex === 0 ? featuredProducts.length - 1 : currentIndex - 1;
@@ -56,9 +56,9 @@ export default function FeaturedProducts() {
 
       {/* Description */}
       <div className="mt-6 px-4 sm:px-8 lg:px-20 w-full md:w-[870px]">
-        <motion.p 
-        className="text-xs sm:text-[18px] leading-6 sm:leading-8 tracking-wider capitalize break-words"
-        initial="offscreen"
+        <motion.p
+          className="text-xs sm:text-[18px] leading-6 sm:leading-8 tracking-wider capitalize break-words"
+          initial="offscreen"
           whileInView="onscreen"
           variants={togVariants}
         >
@@ -89,31 +89,19 @@ export default function FeaturedProducts() {
                 onClick={prevImage}
               />
 
-              {/* <Link href={`/diningtable/${featuredProducts[currentIndex]?._id}`} passHref>
-                <div className="flex justify-between items-center rounded-full bg-white w-[55vw] md:w-[500px] h-[55vw] md:h-[500px] cursor-pointer z-10">
-                  <Image
-                    src={getImageUrl(featuredProducts[currentIndex]?.images[0])}
-                    width={500}
-                    height={300}
-                    alt="Current Image"
-                    className="block max-w-none cursor-pointer z-20 mx-auto"
-                  />
+              <Link href={`/diningtable/${featuredProducts[currentIndex]?._id}`} passHref>
+                <div className="relative flex justify-center items-center rounded-full bg-white w-[55vw] md:w-[500px] h-[55vw] md:h-[500px] cursor-pointer z-10">
+                  <div className="absolute w-[90%] h-[90%] aspect-square">
+                    <Image
+                      src={getImageUrl(featuredProducts[currentIndex]?.images[0])}
+                      fill
+                      alt="Current Image"
+                      className="object-contain cursor-pointer z-20"
+                      sizes="(max-width: 768px) 55vw, 500px"
+                    />
+                  </div>
                 </div>
-              </Link> */}
-
-<Link href={`/diningtable/${featuredProducts[currentIndex]?._id}`} passHref>
-  <div className="relative flex justify-center items-center rounded-full bg-white w-[55vw] md:w-[500px] h-[55vw] md:h-[500px] cursor-pointer z-10 overflow-hidden">
-    <div className="absolute w-[90%] h-[90%] aspect-square">
-      <Image
-        src={getImageUrl(featuredProducts[currentIndex]?.images[0])}
-        fill
-        alt="Current Image"
-        className="object-contain cursor-pointer z-20"
-        sizes="(max-width: 768px) 55vw, 500px"
-      />
-    </div>
-  </div>
-</Link>
+              </Link>
 
               <BsArrowRight
                 className="relative right-3 text-4xl sm:text-5xl bg-[#dddbd6] text-[#766554] rounded-full p-2 opacity-70 cursor-pointer"
@@ -135,10 +123,10 @@ export default function FeaturedProducts() {
 
           <Link href={`/diningdetails/${featuredProducts[currentIndex]?._id}`} passHref>
             <motion.div className="w-full px-4 self-end flex justify-center mt-2"
-             initial="offscreen"
-             whileInView="onscreen"
-             variants={titleVariants}
-             >
+              initial="offscreen"
+              whileInView="onscreen"
+              variants={titleVariants}
+            >
               <p className="sm:tracking-[10px] text-[#766554] text-center text-sm xs:text-lg sm:text-2xl font-normal">
                 {featuredProducts[currentIndex]?.name || "Product Name"}
               </p>
