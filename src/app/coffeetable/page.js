@@ -111,7 +111,7 @@ export default function Coffeetable() {
   const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
 
   return (
-    <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
+    <div className="2xl:container my-5 mx-auto px-4 sm:px-8 overflow-x-hidden">
       <div className="flex flex-wrap mt-3 items-center">
         <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white] lg:px-10">
           <div className="hidden lg:block h-[85px]"></div>

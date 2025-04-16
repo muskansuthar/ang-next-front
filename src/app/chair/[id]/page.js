@@ -45,7 +45,7 @@ export default function StoolDetails({ params }) {
     image ? `${imageBaseUrl}${image}` : "/placeholder.jpg";
 
   return (
-    <div className="2xl:container mx-auto">
+    <div className="2xl:container mx-auto overflow-x-hidden">
       <div className="relative">
         {/* Background Image */}
         <div className="hidden lg:block absolute top-4 right-0 w-5/12">
@@ -63,14 +63,16 @@ export default function StoolDetails({ params }) {
           <div className="w-full lg:w-7/12 mr-4 ml-4">
             {/* Big Image */}
             <div className="flex justify-center items-center mt-12 h-[200px] sm:h-[300px] md:h-[400px]">
-              <Image
-                src={getImageUrl(selectedImage) || "/sbm.png"}
-                alt="Stool"
-                width={530}
-                height={326}
-                className="mx-auto object-contain max-h-full"
-              />
+              <div className="relative w-full h-full max-w-[530px] aspect-[530/326]">
+                <Image
+                  src={getImageUrl(selectedImage) || "/sbm.png"}
+                  alt="Stool"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
+
 
             {/* Small Images */}
             <div className="relative flex justify-center items-center mt-8 sm:mt-14 z-10 h-36">
@@ -143,8 +145,10 @@ export default function StoolDetails({ params }) {
           </div>
 
           <div className="flex w-full md:ml-4 mb-4 md:mt-4 flex-col items-center md:items-start">
-            <div className="w-full md:w-auto text-center md:text-left md:mt-4 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
-              Product Code : {product.code}
+            <div className="w-full md:w-auto text-center md:text-left mt-4 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide px-3 md:px-6">
+              <span className="font-medium text-sm md:text-[16px]">
+                Product Code :
+              </span><span className="text-[14px]"> {product.code}</span>
             </div>
             <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
               {product.name}

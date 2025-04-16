@@ -55,8 +55,8 @@ export default function DiningDetails({ params }) {
                 onClick={prevSlide}
                 disabled={currentSlide === 0}
                 className={`absolute md:rotate-90 left-0 sm:left-10 md:left-auto md:top-[-25px] md:-translate-y-1/2 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide === 0
-                    ? "opacity-50 cursor-not-allowed"
-                    : "cursor-pointer"
+                  ? "opacity-50 cursor-not-allowed"
+                  : "cursor-pointer"
                   }`}
               >
                 <svg
@@ -98,8 +98,8 @@ export default function DiningDetails({ params }) {
                 onClick={nextSlide}
                 disabled={currentSlide >= product.images.length - 3}
                 className={`absolute right-0 sm:right-10 md:rotate-90 md:right-auto md:bottom-[-25px] md:translate-y-1/2 z-10 bg-white p-1 rounded-full shadow-md ${currentSlide >= product.images.length - 3
-                    ? "opacity-50 cursor-not-allowed"
-                    : "cursor-pointer"
+                  ? "opacity-50 cursor-not-allowed"
+                  : "cursor-pointer"
                   }`}
               >
                 <svg
@@ -142,8 +142,10 @@ export default function DiningDetails({ params }) {
         </div>
 
         {/* Product Name */}
-        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
-          Product Code : {product.code}
+        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide px-3 md:px-6">
+          <span className="font-medium text-sm md:text-[16px]">
+            Product Code :
+          </span><span className="text-[14px]"> {product.code}</span>
         </div>
         <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
           {product.name}

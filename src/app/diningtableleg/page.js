@@ -104,7 +104,7 @@ export default function DiningTableleg() {
   const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
 
   return (
-    <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
+    <div className="2xl:container my-5 mx-auto px-4 sm:px-8 overflow-x-hidden">
       <div className="flex flex-wrap mt-3">
         <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white]">
           <div className="hidden md:block h-[40px] lg:h-[85px]"></div>

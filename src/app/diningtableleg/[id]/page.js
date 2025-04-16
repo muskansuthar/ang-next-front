@@ -41,7 +41,7 @@ export default function DiningTableLegDetail({ params }) {
     const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
 
     return (
-        <div className="2xl:container mx-auto">
+        <div className="2xl:container mx-auto overflow-x-hidden">
             <div className="relative">
                 {/* Background Image */}
                 <div className="hidden lg:block absolute top-0 right-0 w-1/3">
@@ -59,13 +59,14 @@ export default function DiningTableLegDetail({ params }) {
                     <div className="w-full lg:w-8/12">
                         {/* Large Image */}
                         <div className="flex justify-center items-center mt-12 h-[180px] sm:h-[220px] md:h-[300px]">
-                            <Image
-                                src={getImageUrl(selectedImage) || "/mtbm.png"}
-                                alt="Metal Leg Big"
-                                width={600}
-                                height={400}
-                                className="mx-auto object-contain max-h-full"
-                            />
+                            <div className="relative w-full h-full max-w-[600px]">
+                                <Image
+                                    src={getImageUrl(selectedImage) || "/mtbm.png"}
+                                    alt="Metal Leg Big"
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
                         </div>
 
                         {/* Small Images */}
@@ -114,8 +115,10 @@ export default function DiningTableLegDetail({ params }) {
                     <div className="hidden md:block w-full h-12"></div>
 
                     <div className="flex w-full flex-col items-center md:items-start">
-                        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
-                            Product Code : {product.code}
+                        <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide px-3 md:px-6">
+                            <span className="font-medium text-sm md:text-[16px]">
+                                Product Code :
+                            </span><span className="text-[14px]"> {product.code}</span>
                         </div>
                         <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
                             {product.name}

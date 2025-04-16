@@ -45,7 +45,7 @@ export default function CoffeeTableDetails({ params }) {
     image ? `${imageBaseUrl}${image}` : "/placeholder.jpg";
 
   return (
-    <div className="2xl:container mx-auto">
+    <div className="2xl:container mx-auto overflow-x-hidden">
       <div className="relative">
         {/* Background Image */}
         <div className="hidden lg:block absolute top-0 right-0 w-4/12 z-0">
@@ -142,8 +142,10 @@ export default function CoffeeTableDetails({ params }) {
           </div>
 
           <div className="flex w-full mb-4 md:ml-4 md:mt-9 flex-col items-center md:items-start">
-            <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[6px] px-3 md:px-6">
-              Product Code : {product.code}
+            <div className="w-full md:w-auto text-center md:text-left mt-10 md:mt-0 mb-2 lg:mt-8 text-lg md:text-xl font-sans font-medium tracking-wide px-3 md:px-6">
+              <span className="font-medium text-sm md:text-[16px]">
+                Product Code :
+              </span><span className="text-[14px]"> {product.code}</span>
             </div>
             <div className="w-full md:w-auto text-center md:text-left mb-2 text-lg md:text-xl font-sans font-medium tracking-wide md:tracking-[12px] px-3 md:px-6">
               {product.name}

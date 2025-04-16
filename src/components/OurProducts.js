@@ -29,7 +29,7 @@ export default function OurProducts() {
 
 
   return (
-    <div className="block relative bg-white pb-8 2xl:container 2xl:mx-auto">
+    <div className="block relative bg-white pb-8 2xl:container 2xl:mx-auto overflow-x-hidden">
       {/* Title */}
       <div className="flex justify-center items-center bg-[#F4F3F0] h-10 sm:h-20 mt-4 md:mt-8 w-44 sm:w-96">
         <motion.p

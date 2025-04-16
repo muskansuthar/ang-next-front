@@ -112,7 +112,7 @@ export default function DiningTablePage() {
   const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
 
   return (
-    <div className="w-screen pb-10 h-auto font-sans">
+    <div className="w-screen pb-10 h-auto font-sans overflow-x-hidden">
       <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap mt-3 items-center">
           <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white]">
