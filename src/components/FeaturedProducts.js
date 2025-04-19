@@ -72,7 +72,7 @@ export default function FeaturedProducts() {
         <div className="w-full relative">
           <div className="flex justify-between items-center pt-16 sm:pt-10 pb-5">
             {/* Left White Circle with Previous Image */}
-            <div className="justify-between items-center rounded-full bg-white w-[26vw] md:w-[340px] h-[26vw] md:h-[340px] cursor-pointer -ml-[13.5%] hidden lg:flex">
+            <div className="justify-center items-center rounded-full bg-white w-[26vw] md:w-[340px] h-[26vw] md:h-[340px] cursor-pointer -ml-[13.5%] hidden lg:flex">
               <Image
                 src={getImageUrl(featuredProducts[prevIndex]?.images[0])}
                 width={400}
@@ -110,7 +110,7 @@ export default function FeaturedProducts() {
             </div>
 
             {/* Right White Circle with Next Image */}
-            <div className="justify-between items-center rounded-full bg-white w-[26vw] md:w-[340px] h-[26vw] md:h-[340px] cursor-pointer -mr-[13.5%] hidden lg:flex">
+            <div className="justify-center items-center rounded-full bg-white w-[26vw] md:w-[340px] h-[26vw] md:h-[340px] cursor-pointer -mr-[13.5%] hidden lg:flex">
               <Image
                 src={getImageUrl(featuredProducts[nextIndex]?.images[0])}
                 width={400}

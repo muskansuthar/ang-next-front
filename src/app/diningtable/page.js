@@ -112,7 +112,7 @@ export default function DiningTablePage() {
   const getImageUrl = (image) => (image ? `${imageBaseUrl}${image}` : "/placeholder.jpg");
 
   return (
-    <div className="w-screen pb-10 h-auto font-sans overflow-x-hidden">
+    <div className="w-full pb-4 h-auto font-sans overflow-x-hidden">
       <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap mt-3 items-center">
           <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white]">
@@ -189,16 +189,16 @@ export default function DiningTablePage() {
                 href={`/diningtable/${product._id}`}
                 className="flex flex-col items-center justify-center border p-1 md:p-3 h-36 sm:h-44 md:h-56 lg:h-64 xl:h-72 2xl:h-80 text-center hover:scale-105 transition-transform"
               >
-                <div className="flex-grow flex items-center justify-center w-[60%]">
+                <div className="flex-grow flex items-center justify-center w-[60%] h-[50%]">
                   <Image
                     src={getImageUrl(product?.images[0]) || "/placeholder.jpg"}
                     alt={product.name}
                     width={300}
                     height={200}
-                    className="w-full mx-auto"
+                    className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <div className="w-full text-xs sm:text-[17px] sm:tracking-[3px] mt-auto">
+                <div className="w-full text-xs sm:text-sm md:text-[17px] md:tracking-[2px] md:leading-6">
                   {product.name}
                 </div>
               </Link>
