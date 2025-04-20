@@ -114,7 +114,7 @@ export default function Coffeetable() {
     <div className="w-full pb-4 h-auto font-sans overflow-x-hidden">
       <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap mt-3 items-center">
-          <div className="w-full xs:w-7/12 lg:shadow-[100px_0px_50px_15px_white] lg:px-10">
+          <div className="w-full xs:w-7/12 lg:px-10">
             <div className="hidden lg:block h-[85px]"></div>
             <motion.div
               className="flex justify-center font-normal md:font-thin text-2xl md:text-4xl tracking-wide sm:tracking-[12px] uppercase"
@@ -139,13 +139,14 @@ export default function Coffeetable() {
             whileInView="onscreen"
             variants={slideInRight}
           >
-            <div className="relative w-[90%] aspect-[4/3] lg:ml-2">
+            <div className="relative w-[80%] aspect-[4/3] border-ridge lg:ml-10">
+              <div className="absolute inset-y-0 left-0 z-10 pointer-events-none xs:shadow-[0px_0px_25px_30px_white] md:shadow-[0px_0px_38px_48px_white] lg:shadow-[0px_0px_50px_65px_white]" />
               <Image
                 src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
                 alt="Coffee Table"
                 fill
-                className="object-contain"
-                sizes="(max-width: 640px) 85vw, (max-width: 768px) 45vw, 35vw"
+                className="object-cover"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 35vw"
               />
             </div>
           </motion.div>

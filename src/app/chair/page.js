@@ -113,7 +113,7 @@ export default function Chair() {
     <div className="w-full pb-4 h-auto font-sans overflow-x-hidden">
       <div className="2xl:container my-5 mx-auto px-4 sm:px-8">
         <div className="flex flex-wrap mt-3">
-          <div className="w-full xs:w-8/12 lg:shadow-[100px_0px_50px_15px_white] lg:px-10">
+          <div className="w-full xs:w-8/12 lg:px-10">
             <div className="hidden md:block h-[20px] lg:h-[85px]"></div>
             <motion.div
               className="flex justify-center font-normal md:font-thin text-2xl md:text-4xl tracking-wide sm:tracking-[12px] uppercase"
@@ -139,6 +139,7 @@ export default function Chair() {
             variants={slideInRight}
           >
             <div className="relative w-[70%] aspect-[5/3] border-ridge lg:ml-10">
+              <div className="absolute inset-y-0 left-0 z-10 pointer-events-none xs:shadow-[0px_0px_15px_18px_white] md:shadow-[0px_0px_18px_24px_white] lg:shadow-[0px_0px_24px_30px_white]" />
               <Image
                 src={getImageUrl(categoryData[0]?.images[0]) || "/placeholder.jpg"}
                 alt="Stool Image"
