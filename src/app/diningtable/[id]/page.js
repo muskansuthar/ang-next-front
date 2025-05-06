@@ -176,3 +176,111 @@ export default function DiningDetails({ params }) {
     </div>
   );
 }
+
+
+// import Image from "next/image"
+
+// export default function ProductPage() {
+//   return (
+//     <div className="container mx-auto px-4 py-8 max-w-7xl">
+//       <div className="flex items-start">
+//         <h1 className="text-3xl font-normal tracking-[12px] text-[#8F7C6D] mb-10">10723</h1>
+//       </div>
+//       <div className="flex">
+//         <div className="w-4/12 px-8 space-y-6">
+//           <div className="bg-gray-100 flex h-64 p-4">
+//             <Image
+//               src="/db.png"
+//               alt="Live Edge Slab Dining Table"
+//               width={300}
+//               height={200}
+//               className="object-contain w-full"
+//             />
+//           </div>
+
+//           <div className="bg-gray-100 flex h-64 p-4">
+//             <Image
+//               src="/dc.png"
+//               alt="Live Edge Slab Dining Table Side View"
+//               width={300}
+//               height={200}
+//               className="object-contain w-full"
+//             />
+//           </div>
+
+//           <div className="flex flex-col font-medium justify-center items-center text-md text-[#8F7C6D]">
+//             <div className="tracking-[6px]">240cm x 100cm x 77cm.</div>
+//             <div className="tracking-[6px] mt-3">CBM: 0.334</div>
+//           </div>
+//         </div>
+
+//         <div className="w-8/12">
+//           <div>
+//             <h2 className="text-2xl font-normal tracking-[8px] text-[#8F7C6D]">
+//               Live Edge Slab Dining Table With Swiss Spider Leg
+//             </h2>
+//           </div>
+
+//           <div>
+//             <div className="p-8 border-l" style={{ borderLeftColor: '#8F7C6D', borderLeftWidth: '2px' }}>
+//               <div className="bg-gray-100 p-4 h-96 flex relative">
+//                 <div className="absolute top-0 left-0 w-32 h-32">
+//                   <div className="absolute top-0 left-0 h-0.5 w-full bg-gradient-to-r from-gray-700 via-gray-300 to-gray-100"></div>
+//                   <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-gray-700 via-gray-300 to-gray-100"></div>
+//                 </div>
+//                 <div className="absolute bottom-0 right-0 w-32 h-32">
+//                   <div className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-gray-100 via-gray-300 to-gray-700"></div>
+//                   <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-gray-100 via-gray-300 to-gray-700"></div>
+//                 </div>
+//                 <Image
+//                   src="/da.png"
+//                   alt="Live Edge Slab Dining Table Main View"
+//                   width={500}
+//                   height={300}
+//                   className="object-contain w-full"
+//                 />
+//               </div>
+
+//               <div className="mt-14 flex">
+//                 <div className="w-7/12 space-y-5">
+//                   <div className="flex">
+//                     <span className="text-md font-semibold tracking-[6px] text-[#8F7C6D]">Material:</span>
+//                     <span className="text-md tracking-[4px] text-[#8F7C6D] pl-2">Acacia Wood, Iron</span>
+//                   </div>
+
+//                   <div className="border-t-2 ml-5 opacity-50" style={{ borderColor: '#8F7C6D' }}></div>
+
+//                   <div className="flex">
+//                     <span className="text-md font-semibold tracking-[6px] text-[#8F7C6D]">Finish:</span>
+//                     <span className="text-md tracking-[4px] text-[#8F7C6D] pl-2">Natural, Black P/C</span>
+//                   </div>
+//                 </div>
+//                 <div className="w-5/12 flex justify-end items-center relative">
+//                   <div className="absolute right-[50px] w-20 z-20">
+//                     <Image
+//                       src="/de.png"
+//                       alt="Live Edge Slab Dining Table"
+//                       width={300}
+//                       height={200}
+//                       className="object-contain w-full"
+//                     />
+//                   </div>
+//                   <div className="absolute w-20">
+//                     <Image
+//                       src="/dd.png"
+//                       alt="Live Edge Slab Dining Table"
+//                       width={300}
+//                       height={200}
+//                       className="object-contain w-full"
+//                     />
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
